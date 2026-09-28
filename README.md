@@ -1,38 +1,24 @@
 # Metatron: herramienta de monitoreo
 
-Tablero público de monitoreo de publicaciones en Bolivia. HTML, CSS y JavaScript sin compilación; gráficas SVG interactivas y animadas, adaptables a teléfonos y con reducción de movimiento.
+Tablero público del monitoreo informativo de Bolivia realizado con **MET4TRON FLEX**. Presenta publicaciones, interacción, agenda temática, distribución por ciudades, personas mencionadas y señales de presión informativa sobre autoridades.
 
-## Qué muestra
+La herramienta de escritorio procesa los originales y publica exclusivamente `data/latest.json` mediante un token local de GitHub. El código Python, las claves de API, la base de datos y los archivos originales permanecen en el equipo del operador.
 
-- Categorías por interacción: Política, Sociedad, Deporte, Espectáculo y Noticias internacionales; pendientes conservados como Sin clasificar.
-- Publicaciones en barras e interacciones en línea, con ejes independientes.
-- Ciudades con porcentajes que suman 100% de la interacción geolocalizada. Otros se excluye y su volumen se informa.
-- Índice exploratorio de presión informativa del gobierno nacional; gobernación y alcaldía al seleccionar ciudad.
-- Personas resueltas, resumen extractivo y Top 10 por Facebook, TikTok e Instagram.
-- Hoy, 7, 15 y 30 días y fechas personalizadas. Hora de Bolivia.
+## Consulta
 
-## Datos y actualización
+- Hoy, 7, 15, 30 días o fechas personalizadas dentro de los datos disponibles.
+- Panorama general y ciudades de Bolivia.
+- Categorías, publicaciones e interacción por hora o día y distribución territorial al 100% de la interacción geolocalizada.
+- Indicador nacional; gobernación y alcaldía en la vista de cada ciudad.
+- Personas, resumen de todas las ciudades, cinco temas principales, cuentas y palabras clave.
+- Top 10 de publicaciones separado por Facebook, TikTok e Instagram.
 
-`data/latest.json` es el único archivo que actualiza rutinariamente la herramienta de escritorio. Contiene una ventana móvil de 30 días inclusivos hasta la fecha local de sincronización. La web consulta la última versión cada cinco minutos y permite actualizar manualmente. No se incluye una base de datos privada, claves, tokens ni código Python.
+Los indicadores son exploratorios y muestran su método y evidencia. La falta de datos no equivale a normalidad. Los casos ambiguos se revisan en la herramienta privada. Las interacciones se agrupan por fecha de publicación, no por el momento real de cada reacción.
 
-Al abrir por primera vez se muestra un estado vacío; no se inventan métricas. La herramienta personal configura usuario y token GitHub y ejecuta Sincronizar. La consulta temporal se recalcula en el navegador.
+## Actualización
 
-**Alcance de retención:** el JSON actual tiene 30 días; los commits anteriores de un repositorio público pueden conservar versiones antiguas. Esta arquitectura no promete borrado histórico de datos ya publicados.
+La web consulta el archivo de datos cada cinco minutos. El archivo sincronizado contiene los últimos 30 días según la hora de Bolivia. El equipo del operador debe estar encendido para procesar y enviar nuevas actualizaciones; el sitio permanece disponible con la última versión recibida.
 
-## Publicación
+GitHub conserva las versiones anteriores en el historial de commits. La ventana de 30 días se aplica al archivo actual, no constituye borrado de datos previamente publicados en el historial.
 
-GitHub → Settings → Pages → Deploy from a branch → main → /(root) → Save.
-
-Para una prueba local: `python -m http.server 8080` en esta carpeta; abrir http://localhost:8080. Usar un servidor HTTP, no abrir index.html como file://.
-
-## Metodología
-
-Las interacciones son acumuladas por publicación y se agrupan por la fecha de publicación; no se dispone de timestamps de cada reacción. El medidor no es una encuesta ni un diagnóstico validado: combina en partes iguales gravedad media y gravedad ponderada por interacciones, escala 0–3 convertida a 0–100, mínimo cinco publicaciones institucionales. Normal <35; alerta 35–<65; crisis ≥65. El nivel departamental usa todas las publicaciones identificadas del departamento.
-
-Las personas cuentan una vez por publicación; se ordenan por publicaciones con mención y se desempata por interacción. Los alias no unívocos quedan pendientes en la herramienta de escritorio. Los resúmenes citan titulares originales y cifras calculadas, no generan hechos nuevos.
-
-## Contrato JSON
-
-Schema 1; campos `generated`, `start`, `end`, `timezone`, `methodology`, `categories`, `cities`, `records`. Cada registro: `id`, `fecha` ISO con offset -04:00, `titulo`, `perfil`, `red`, `link`, `interaccion_total`, `category`, `city`, `department`, `risk`, `people`. Los campos de texto se insertan usando `textContent`, y los enlaces admiten solo HTTP/HTTPS.
-
-La primera sincronización y todas las posteriores se realizan desde el equipo personal. La web sigue disponible con el último corte cuando el equipo está apagado; no obtiene datos nuevos por sí sola.
+No subas a este repositorio el archivo Python privado ni su carpeta de datos. La interfaz se construye con HTML, CSS, JavaScript y SVG; no requiere un servidor Python público.

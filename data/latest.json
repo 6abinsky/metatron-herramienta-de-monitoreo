@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "generated": null,
+  "start": null,
+  "end": null,
+  "timezone": "America/La_Paz",
+  "methodology": "Interacciones acumuladas de las publicaciones, agrupadas por su fecha/hora de publicación (America/La_Paz); no son horas reales de las reacciones. Categorías excluyentes; pendientes conservados. Ciudades: porcentajes sobre interacción geolocalizada, Otros excluido y cuantificado. Personas: una mención por publicación; alias ambiguos no se fusionan. Índice de presión informativa = 100 × (0,5 × gravedad media/3 + 0,5 × gravedad ponderada por interacción/3). Gravedad 0–3, normal <35, alerta 35–<65, crisis ≥65; mínimo 5 publicaciones sobre la institución. Índice exploratorio basado en cobertura mediática, no encuesta ni medición validada de crisis. Gobernación: todo el departamento identificado. Resumen extractivo con fuentes; cifras calculadas en Python.",
+  "cities": {
+    "La Paz": "La Paz",
+    "El Alto": "La Paz",
+    "Cochabamba": "Cochabamba",
+    "Santa Cruz": "Santa Cruz",
+    "Oruro": "Oruro",
+    "Potosí": "Potosí",
+    "Sucre": "Chuquisaca",
+    "Tarija": "Tarija",
+    "Trinidad": "Beni",
+    "Cobija": "Pando"
+  },
+  "categories": [
+    "Política",
+    "Sociedad",
+    "Deporte",
+    "Espectáculo",
+    "Noticias internacionales"
+  ],
+  "records": [],
+  "narratives": {},
+  "demo": false
+}
